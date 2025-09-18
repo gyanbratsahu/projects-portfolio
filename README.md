@@ -2,7 +2,7 @@
 
 > **Quick note (read first)**
 >
-> Thank you for looking at this project. These tools were developed as *contract work* for a company, so the original source code is proprietary and cannot be shared. What I can provide here (and have provided) are **Windows executables (.exe)** packaged in `.zip` files that demonstrate the core MVP features I implemented. The README below describes what each executable does, how to evaluate it, what to look for as a recruiter or reviewer, and a short, honest account of constraints and next steps.
+> Thank you for looking at this project. These tools were developed as *contract work* for a company, so the original source code is proprietary and cannot be shared. What I can provide here (and have provided) are **Windows executables (.exe)** packaged in `.zip` files that demonstrate the core MVP features I implemented. The README below describes what each package does, how to evaluate it, what to look for as a recruiter or reviewer, and a short, honest account of constraints and next steps.
 
 ---
 
@@ -13,9 +13,9 @@
 3. Quick start (run and test)
 4. Deep-dive: features & flows
 
-   * a. `dashboard_login.zip` (UID/MAC-locked, login / registration)
-   * b. `data_fetch_nologin.zip` — SmartAPI fetcher (no login)
-   * c. `dashboard_nologin.zip` — interactive analysis dashboard (no login)
+   * a. `dashboard_login.zip` — UID/MAC-locked, login / registration
+   * b. `dashboard_nologin.zip` — interactive analysis dashboard (no login)
+   * c. `data_fetch_nologin.zip` — SmartAPI fetcher (no login)
 5. Screenshots (key views)
 6. How interviewers should evaluate this
 7. Technical notes & design decisions
@@ -41,8 +41,8 @@ Because this was built for a client as contract work, the deliverables you will 
 ## 2) What’s included (delivered files you should have)
 
 * `dashboard_login.zip` — **login / registration required** (UID + MAC-based key tied to device). Demonstrates device-level licensing.
-* `data_fetch_nologin.zip` — lightweight SmartAPI data fetcher where you provide `from`/`to` dates, timeframe (1min/3min/5min/etc.), SmartAPI symbol token and an output filename. Produces CSV output.
-* `dashboard_nologin.zip` — interactive dashboard that accepts a specific trade file format (see notes below) and generates the charts shown in screenshots.
+* `dashboard_nologin.zip` — interactive dashboard that accepts a specific trade file format (see notes below) and generates the charts shown in screenshots. No login required.
+* `data_fetch_nologin.zip` — lightweight SmartAPI data fetcher where you provide `from`/`to` dates, timeframe (1min/3min/5min/etc.), SmartAPI symbol token and an output filename. Produces CSV output. No login required.
 
 ---
 
@@ -55,7 +55,7 @@ Because this was built for a client as contract work, the deliverables you will 
 1. Extract the supplied `.zip` files into a folder (e.g., `C:\TradeTools\`).
 2. **Login-demo:** Launch from `dashboard_login.zip` (this demonstrates the UID+MAC lock). The app will show a small registration/login card with local UID/key request.
 3. **Data fetch (no-login):** Launch from `data_fetch_nologin.zip`. Provide `from` and `to` dates, select a timeframe, enter a SmartAPI symbol token, and choose an output filename. Click `Fetch` — the app will produce a CSV.
-4. **Dashboard:** Launch from `dashboard_nologin.zip`, upload the CSV produced in step 3 (or a compatible trades file). The dashboard will analyze the file and present metrics and interactive charts.
+4. **Dashboard (no-login):** Launch from `dashboard_nologin.zip`, upload the CSV produced in step 3 (or a compatible trades file). The dashboard will analyze the file and present metrics and interactive charts.
 
 ---
 
@@ -65,30 +65,30 @@ Because this was built for a client as contract work, the deliverables you will 
 
 * Purpose: demonstrate a licensing/usage lock that ties a generated key to the machine UID/MAC. The app asks for a registration `Key:` based on the displayed UID so the executable cannot be copied across machines.
 * What you will see: a minimal registration card that shows `Your UID: <UID string>` and a `Key:` input. If a license is expired, the app will show a polite message and block functionality. Example screenshot:
-
-<img width="1920" height="865" alt="Screenshot (141)" src="https://github.com/user-attachments/assets/4a00feac-fffc-4677-9b94-b69a90d11eb8" />
+  
+<img width="1920" height="865" alt="Screenshot (141)" src="https://github.com/user-attachments/assets/c8fdaad5-6ad5-44a0-a922-54154e053506" />
 
 
 *Caption:* The UID/MAC-registration view. The key field is tied to the device UID/MAC which restricts copying.
 
-### b) `data_fetch_nologin.zip` — SmartAPI fetcher
+### b) `dashboard_nologin.zip` — interactive analysis dashboard
+
+* Purpose: allow a reviewer to drop in a trade/export file and see a structured post-trade analysis (P/L, drawdown, win/loss counts, distribution by holding period, buying time ranges, and calendar-based slicing).
+* File expectation: a simple trade-log CSV with buy/sell events or paired trade rows. The dashboard will try to pair buy & sell rows automatically.
+
+### c) `data_fetch_nologin.zip` — SmartAPI fetcher
 
 * Purpose: fetch OHLC/time-series/tick-like data for a symbol over a date range at a chosen timeframe.
 * Inputs: `from date`, `to date`, `timeframe` (1min, 3min, 5min, ...), **SmartAPI symbol token**, and `output filename`.
 * Output: CSV containing the collected bars/ticks for the period.
 
-### c) `dashboard_nologin.zip` — interactive analysis dashboard
-
-* Purpose: allow a reviewer to drop in a trade/export file and see a structured post-trade analysis (P/L, drawdown, win/loss counts, distribution by holding period, buying time ranges, and calendar-based slicing).
-* File expectation: a simple trade-log CSV with buy/sell events or paired trade rows. The dashboard will try to pair buy & sell rows automatically.
-
 Screenshots below show the overview, trading metrics panel, drawdown chart, trade mix, and profit-by-day visualizations.
 
-<img width="1920" height="857" alt="Screenshot (142)" src="https://github.com/user-attachments/assets/4127ba69-a884-4914-9e75-fefb7a81f2b3" />
-<img width="1920" height="868" alt="Screenshot (143)" src="https://github.com/user-attachments/assets/d5f137c8-809c-44e2-85d7-52a0f3d0d955" />
-<img width="1920" height="867" alt="Screenshot (144)" src="https://github.com/user-attachments/assets/1e59730b-6740-4d3b-986f-a668ee08532e" />
-<img width="1920" height="863" alt="Screenshot (145)" src="https://github.com/user-attachments/assets/735a6030-6a49-4358-b6a2-0e3f4be09445" />
-<img width="1920" height="868" alt="Screenshot (146)" src="https://github.com/user-attachments/assets/a8c575e3-a99e-4a4f-8214-2f98cf31f27a" />
+<img width="1920" height="857" alt="Screenshot (142)" src="https://github.com/user-attachments/assets/4284afba-9c2d-4bcb-99a8-4ec70c24d815" />
+<img width="1920" height="868" alt="Screenshot (143)" src="https://github.com/user-attachments/assets/0398bf42-463e-44e8-ab9b-e0c0e1d41042" />
+<img width="1920" height="867" alt="Screenshot (144)" src="https://github.com/user-attachments/assets/f272e151-9a2f-4c17-98ab-1d14da300a6d" />
+<img width="1920" height="863" alt="Screenshot (145)" src="https://github.com/user-attachments/assets/e98e8e2e-5932-47cd-a282-575c7161daf7" />
+<img width="1920" height="868" alt="Screenshot (146)" src="https://github.com/user-attachments/assets/aaf2e1de-2120-4045-9b7a-1349f9b48051" />
 
 
 ---
