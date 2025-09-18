@@ -73,7 +73,8 @@ Because this was built for a client as contract work, the deliverables you will 
 
 * What you will see: a minimal registration card that shows `Your UID: <UID string>` and a `Key:` input. If a license is expired, the app will show a polite message and block functionality (this is part of the contract deliverable). Example screenshot:
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/81cbfc95-44b4-4acd-befd-bc1d4933ed81" />
+<img width="1920" height="865" alt="Screenshot (141)" src="https://github.com/user-attachments/assets/680e6e50-91fc-42a7-a710-d70a1b554672" />
+
 
 *Caption:* The UID-registration view. The key field is tied to the device UID which restricts copying.
 
@@ -105,25 +106,28 @@ Below are representative dashboard screenshots showing:
 * drawdown chart & trade distribution pie chart
 * binning by holding period and buying-time range
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e490832a-2f70-4c58-81e0-f99149a7fbd4" />
-
+<img width="1920" height="857" alt="Screenshot (142)" src="https://github.com/user-attachments/assets/6bbb1128-c3a2-42a8-839e-8336d8f6f0d9" />
 
 *Caption:* Project landing page and top-level metrics, with calendar-based slicing.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/66f96831-e295-49a4-ab42-840060b33826" />
+
+
+<img width="1920" height="868" alt="Screenshot (143)" src="https://github.com/user-attachments/assets/9a126412-c768-4112-8125-45a57461bc49" />
 
 *Caption:* Trading metrics panel and interactive calendar.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/86f31a1f-bdda-4b1a-8114-6f0862f27ecb" />
 
+
+<img width="1920" height="867" alt="Screenshot (144)" src="https://github.com/user-attachments/assets/b7622a8d-07d4-4c50-a32e-2223379e957f" />
 
 *Caption:* Drawdown and trade mix views.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/71a18a94-e209-4b2d-be4c-6757c0edca9d" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/15140971-26f9-4f3e-8933-7f949b850bbb" />
 
 
+<img width="1920" height="863" alt="Screenshot (145)" src="https://github.com/user-attachments/assets/31a56e8e-511d-424b-b304-7f9f323cbd10" />
+
+
+<img width="1920" height="868" alt="Screenshot (146)" src="https://github.com/user-attachments/assets/418f5145-1759-46c5-93b0-93588539dd62" />
 
 *Caption:* Time-of-day buying distribution and profit-by-day chart.
 
