@@ -84,11 +84,11 @@ Because this was built for a client as contract work, the deliverables you will 
 
 Screenshots below show the overview, trading metrics panel, drawdown chart, trade mix, and profit-by-day visualizations.
 
-<img width="1920" height="868" alt="Screenshot (146)" src="https://github.com/user-attachments/assets/a8c575e3-a99e-4a4f-8214-2f98cf31f27a" />
-<img width="1920" height="863" alt="Screenshot (145)" src="https://github.com/user-attachments/assets/735a6030-6a49-4358-b6a2-0e3f4be09445" />
-<img width="1920" height="867" alt="Screenshot (144)" src="https://github.com/user-attachments/assets/1e59730b-6740-4d3b-986f-a668ee08532e" />
-<img width="1920" height="868" alt="Screenshot (143)" src="https://github.com/user-attachments/assets/d5f137c8-809c-44e2-85d7-52a0f3d0d955" />
 <img width="1920" height="857" alt="Screenshot (142)" src="https://github.com/user-attachments/assets/4127ba69-a884-4914-9e75-fefb7a81f2b3" />
+<img width="1920" height="868" alt="Screenshot (143)" src="https://github.com/user-attachments/assets/d5f137c8-809c-44e2-85d7-52a0f3d0d955" />
+<img width="1920" height="867" alt="Screenshot (144)" src="https://github.com/user-attachments/assets/1e59730b-6740-4d3b-986f-a668ee08532e" />
+<img width="1920" height="863" alt="Screenshot (145)" src="https://github.com/user-attachments/assets/735a6030-6a49-4358-b6a2-0e3f4be09445" />
+<img width="1920" height="868" alt="Screenshot (146)" src="https://github.com/user-attachments/assets/a8c575e3-a99e-4a4f-8214-2f98cf31f27a" />
 
 
 ---
