@@ -1,208 +1,165 @@
-# projects-portfolio
-Automation projects done under a contractual work
+projects-portfolio
 
-> **Quick note (read first)**
->
-> Thank you for looking at this project. These tools were developed as *contract work* for a company, so the original source code is proprietary and cannot be shared. What I can provide here (and have provided) are **Windows executables (.exe)** that demonstrate the core MVP features I implemented. The README below describes what each executable does, how to evaluate it, what to look for as a recruiter or reviewer, and a short, honest account of constraints and next steps.
+Automation projects delivered as part of contractual work
 
----
+Quick note
+These tools were developed as contract work, so the original source code cannot be shared. Instead, I’ve provided Windows executables (.exe) that demonstrate the MVP features.
 
-## Table of contents
+⚠️ Please do not use the login-locked executable (dashboard_login.zip) — it requires a device-specific key and will not run without activation. Focus on the no-login versions for review.
 
-1. Project snapshot
-2. What’s included
-3. Quick start (run and test)
-4. Deep-dive: features & flows
+Table of contents
 
-   * a. `data_fetcher.exe` (UID-locked, login / registration)
-   * b. Data fetch (no-login) — fetch historical ticks / bars
-   * c. `dashboard_nologin` — interactive analysis dashboard
-5. Screenshots (key views)
-6. How recruiters / reviewers should evaluate this
-7. Technical notes & design decisions
-8. Limitations, security & contractual note
-9. How I'd extend this (if given time)
-10. Contact / next steps
+Project snapshot
 
----
+Delivered files
 
-## 1) Project snapshot
+Quick start (run & test)
 
-This is a small suite of local tools for **intraday trade data fetching and post-trade analysis**. The goal was to produce a lightweight, reliable local pipeline that:
+Features & flows
 
-* fetches market data (by timeframe) and stores it to a file
-* ingests a trade log and automatically pairs buys/sells where possible
-* computes standard trading metrics (P/L, drawdown, win rate, hold-time metrics, distribution charts)
-* provides a polished, interactive dashboard for exploratory analysis
+Screenshots
 
-Because this was built for a client as contract work, the deliverables you will see are packaged executables (MVPs) rather than source repositories.
+How to evaluate
 
----
+Technical notes & design decisions
 
-## 2) What’s included (delivered files you should have)
+Limitations & contractual note
 
-* `data_fetcher.exe` — **login / registration required** (UID-based key tied to device). This is the one that enforces device-level licensing.
-* `data_fetch` (no-login mode) — lightweight data fetcher where you provide `from`/`to` dates, timeframe (1min/3min/5min/etc.), SmartAPI symbol token and an output filename. This will fetch data and save to a CSV.
-* `dashboard_nologin.exe` — interactive dashboard that accepts a specific trade file format (see notes below) and generates the charts shown in screenshots.
+My contribution
 
-> Note: filenames may vary slightly depending on the pack delivered. The important part is the behavior described above.
+Contact
 
----
+1) Project snapshot
 
-## 3) Quick start (run & test — recruiter friendly)
+A small suite of tools for intraday trade data fetching and post-trade analysis. The pipeline:
 
-**Environment:** Windows 10/11 machine (executables built for Windows). The tools are local web apps and open a browser page at `127.0.0.1:5000`.
+fetches market data (by timeframe)
 
-**Steps I recommend for a quick review:**
+ingests a trade log and pairs buys/sells where possible
 
-1. Put the supplied executables in a folder (e.g., `C:\TradeTools\`) and double-click `data_fetcher.exe` (or `dashboard_nologin.exe`). A browser window should open at `http://127.0.0.1:5000/`.
+computes trading metrics (P/L, drawdown, win rate, holding period, distributions)
 
-2. **Login-demo:** Launch `data_fetcher.exe` (this demonstrates the UID-based restriction). The app will show a small registration/login card and will display the local UID / key request. (See screenshot below.)
+displays results in an interactive dashboard
 
-3. **Data fetch (no-login):** Launch the no-login fetcher. Provide `from` and `to` dates, select a timeframe (1min, 3min, 5min, etc.), enter a SmartAPI symbol token (this is the token for the instrument you want to fetch), and choose an output filename. Click `Fetch` — the app will produce a CSV in the local folder.
+All packaged as local executables for Windows.
 
-4. **Dashboard:** Launch `dashboard_nologin.exe`, upload the CSV produced in step 3 (or a compatible trades file). The dashboard will analyze the file and present metrics and interactive charts.
+2) Delivered files
 
----
+dashboard_login.zip – UID + MAC–based lock / registration system.
 
-## 4) Deep-dive: features & flows
+⚠️ Not usable for recruiters since it requires a license key.
 
-### a) `data_fetcher.exe` — UID-locked registration (why and what to expect)
+data_fetch_nologin.zip – fetches historical data based on:
 
-* Purpose: demonstrate a licensing/usage lock that ties a generated key to the machine UID (or MAC). The app asks for a registration `Key:` based on the displayed UID so the executable cannot be copied and reused across machines with the same username/password.
+from–to date
 
-* What you will see: a minimal registration card that shows `Your UID: <UID string>` and a `Key:` input. If a license is expired, the app will show a polite message and block functionality (this is part of the contract deliverable). Example screenshot:
+timeframe (1min/3min/5min, etc.)
 
+SmartAPI symbol token
+
+output filename → produces a CSV.
+
+dashboard_nologin.zip – analysis dashboard (no login required). Upload a compatible trade file (or CSV from the fetcher) to view metrics and charts.
+
+3) Quick start (Windows-friendly)
+
+Place executables in a folder, e.g. C:\TradeTools\.
+
+Run data_fetch_nologin.exe. A local web page opens at http://127.0.0.1:5000/.
+
+Input: date range, timeframe, SmartAPI token, filename → click Fetch. CSV is saved locally.
+
+Run dashboard_nologin.exe. Upload the CSV → interactive charts and metrics appear.
+
+4) Features & flows
+data_fetch_nologin
+
+Inputs: from–to dates, timeframe, SmartAPI token, output file.
+
+Output: CSV with OHLC/tick data.
+
+dashboard_nologin
+
+Input: trade-log CSV or fetched data.
+
+Features:
+
+Total trades, P/L, win rate, ROI
+
+Drawdown visualization
+
+Holding-period & time-of-day distributions
+
+Calendar-based slicing
+
+5) Screenshots
+
+UID-based registration view (from dashboard_login.zip)
 <img width="1920" height="865" alt="Screenshot (141)" src="https://github.com/user-attachments/assets/680e6e50-91fc-42a7-a710-d70a1b554672" />
 
-
-*Caption:* The UID-registration view. The key field is tied to the device UID which restricts copying.
-
-### b) Data fetch (no-login)
-
-* Purpose: fetch OHLC/time-series/tick-like data for a symbol over a date range at a chosen timeframe.
-* Inputs you provide: `from date`, `to date`, `timeframe` (1min, 3min, 5min, ...), **SmartAPI symbol token**, and `output filename`.
-* Output: a CSV (or simple tabular file) containing the collected bars/ticks for the period.
-
-> Example input (for a quick smoke test):
->
-> * From: `2024-11-27`
-> * To: `2024-11-29`
-> * Timeframe: `1min`
-> * Symbol token: `12345` (example)
-> * Output: `sample_fetch.csv`
-
----
-
-### c) `dashboard_nologin` — interactive analysis dashboard (what to expect)
-
-* Purpose: allow a reviewer to drop in a trade/export file and see a structured post-trade analysis (P/L, drawdown, win/loss counts, distribution by holding period, buying time ranges, and calendar-selection to slice days).
-* File expectation: a restricted/simple trade-log CSV (a single file with buy/sell events or paired trade rows). The dashboard will try to pair buy & sell rows automatically; if the structure differs the UI provides hints or shows mismatches.
-
-Below are representative dashboard screenshots showing:
-
-* overview (total trades, P/L)
-* trading metrics panel (total days, ROI, win rate, avg capital employed)
-* drawdown chart & trade distribution pie chart
-* binning by holding period and buying-time range
-
+Dashboard overview & top-level metrics
 <img width="1920" height="857" alt="Screenshot (142)" src="https://github.com/user-attachments/assets/6bbb1128-c3a2-42a8-839e-8336d8f6f0d9" />
 
-*Caption:* Project landing page and top-level metrics, with calendar-based slicing.
-
-
-
+Trading metrics panel with calendar
 <img width="1920" height="868" alt="Screenshot (143)" src="https://github.com/user-attachments/assets/9a126412-c768-4112-8125-45a57461bc49" />
 
-*Caption:* Trading metrics panel and interactive calendar.
-
-
-
+Drawdown and trade mix views
 <img width="1920" height="867" alt="Screenshot (144)" src="https://github.com/user-attachments/assets/b7622a8d-07d4-4c50-a32e-2223379e957f" />
 
-*Caption:* Drawdown and trade mix views.
-
-
-
+Buying distribution and profit-by-day analysis
 <img width="1920" height="863" alt="Screenshot (145)" src="https://github.com/user-attachments/assets/31a56e8e-511d-424b-b304-7f9f323cbd10" />
 
-
 <img width="1920" height="868" alt="Screenshot (146)" src="https://github.com/user-attachments/assets/418f5145-1759-46c5-93b0-93588539dd62" />
+6) How to evaluate
 
-*Caption:* Time-of-day buying distribution and profit-by-day chart.
+Functionality: check fetcher → CSV, then dashboard → charts & metrics.
 
----
+Correctness: confirm buy/sell pairing & P/L against a few rows.
 
-## 5) What to look for as a reviewer (how to evaluate quickly)
+Robustness: try slightly malformed files → expect clear error messages.
 
-If you are short on time, these checks highlight the work behind the deliverable:
+UI/UX: interactive charts, tooltips, calendar filters.
 
-* **Functionality**
+Packaging: apps run locally, no installs needed.
 
-  * Launch each executable and confirm a local web UI is served at `127.0.0.1:5000`.
-  * Test the no-login fetch flow with a short date range and verify a CSV output is generated.
-  * Upload the CSV to the dashboard and confirm charts populate, and that metrics (Total P/L, Win Rate, etc.) appear coherent.
+7) Technical notes
 
-* **Data correctness & pairing logic**
+Local-first: executables serve a web UI on 127.0.0.1:5000.
 
-  * Inspect a few rows in the uploaded file and confirm buy/sell pairing & P/L calculations match manual calculation.
+Modular pipeline: fetcher → normalizer → exporter → dashboard.
 
-* **Robustness**
+Dashboard: built for exploratory analysis with multiple interactive charts.
 
-  * Try slightly malformed files (e.g., missing a column) and observe whether the UI shows clear errors or guidance.
+Packaging: delivered as Windows executables to respect IP boundaries.
 
-* **UI / UX**
+8) Limitations & contractual note
 
-  * The dashboard should be interactive: calendar slices should change the charts; hovering on charts should show tooltips.
+No source code included (contractual restriction).
 
-* **Packaging & deployment**
+dashboard_login.zip is not usable without a license key (UID/MAC lock).
 
-  * Confirm the app is packaged and runs locally without additional installs (beyond a standard Windows environment).
+Dashboard requires a simple trade-log format for correct pairing.
 
----
+9) My contribution
 
-## 6) Technical notes & design decisions (concise)
+I designed and built the MVP end-to-end:
 
-* **Local-first app**: delivered as Windows executables which spin up a local HTTP UI (browser-based) on `127.0.0.1:5000`. This makes it simple to demo without server infra.
-* **Modular pipeline**: data fetcher -> normalizer -> exporter -> dashboard. This separation was intentional so each step can be tested in isolation.
-* **Dashboard capabilities**: calendar-based filtering, holding-period bins, drawdown plotting, pie and bar charts for quick distribution analysis.
-* **Packaging**: the executables are delivered for convenience and to comply with contractual IP restrictions.
+Data fetcher with retry logic
 
-> If you'd like to know exact libraries and architecture (for example, whether this used Flask, Plotly, Chart.js, pandas, PyInstaller, etc.), I can provide a technical walkthrough or reproduce a small reference implementation under an NDA.
+Trade pairing, P/L and drawdown calculations
 
----
+Interactive dashboard with metrics and charts
 
-## 7) Limitations, security & contractual note
+Packaging as standalone Windows executables
 
-* The **source code is not included** here. These were built under a client contract; I can discuss architecture and re-implement small examples on request.
-* `data_fetcher.exe` uses a machine UID-based key check. This is by design to prevent unlicensed copying (part of the contract). If you want to test this behavior on a clean machine, I can provide a temporary demo key under a short agreement.
-* The dashboard requires a **restricted file format** for automated pairing. This restriction prevents accidental sharing of live client files: if a file is not accepted, the app will show a helpful hint.
+Skills demonstrated: data engineering (ETL), time-series handling, trade analytics, visualization, packaging, and lightweight licensing logic.
 
----
+10) Contact
 
-## 8) How I contributed (concise, recruiter-friendly)
+Thanks for reviewing. In an interview I’d be glad to discuss:
 
-I led the end-to-end delivery of the MVP including:
+algorithms behind trade pairing and metrics
 
-* designing the ingestion pipeline and the file format contract
-* building the fetcher and robust retry logic for short ranges
-* implementing trade pairing, P/L and drawdown calculation logic
-* creating the interactive dashboard (charts, calendar, and drilldowns)
-* packaging the tools as Windows executables for client delivery
+design decisions & tradeoffs
 
-Core skills demonstrated: data engineering (ETL), time-series data handling, trade analytics, interactive visualization, product-minded packaging for non-technical users, and pragmatic security (UID-based license).
-
----
-
-## 10) Contact / closing note
-
-Thanks for reviewing this work. I’ve kept the README practical and honest, with a balance of context and demonstration. In an interview setting, I’d be glad to discuss:
-
-specific algorithms
-
-design choices, tradeoffs, and possible extensions
-
-Happy to take the conversation in whichever direction is most useful.
-
-<!-- end of README -->
-
+how I’d extend this into a more scalable system
