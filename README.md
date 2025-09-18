@@ -66,7 +66,8 @@ Because this was built for a client as contract work, the deliverables you will 
 * Purpose: demonstrate a licensing/usage lock that ties a generated key to the machine UID/MAC. The app asks for a registration `Key:` based on the displayed UID so the executable cannot be copied across machines.
 * What you will see: a minimal registration card that shows `Your UID: <UID string>` and a `Key:` input. If a license is expired, the app will show a polite message and block functionality. Example screenshot:
 
-![](/mnt/data/27819f1d-33df-48aa-a7cb-ba1953a04fc7.png)
+<img width="1920" height="865" alt="Screenshot (141)" src="https://github.com/user-attachments/assets/4a00feac-fffc-4677-9b94-b69a90d11eb8" />
+
 
 *Caption:* The UID/MAC-registration view. The key field is tied to the device UID/MAC which restricts copying.
 
@@ -83,13 +84,12 @@ Because this was built for a client as contract work, the deliverables you will 
 
 Screenshots below show the overview, trading metrics panel, drawdown chart, trade mix, and profit-by-day visualizations.
 
-![](/mnt/data/3766ade5-3923-4df0-9ddb-c2b5cc0b5830.png)
+<img width="1920" height="868" alt="Screenshot (146)" src="https://github.com/user-attachments/assets/a8c575e3-a99e-4a4f-8214-2f98cf31f27a" />
+<img width="1920" height="863" alt="Screenshot (145)" src="https://github.com/user-attachments/assets/735a6030-6a49-4358-b6a2-0e3f4be09445" />
+<img width="1920" height="867" alt="Screenshot (144)" src="https://github.com/user-attachments/assets/1e59730b-6740-4d3b-986f-a668ee08532e" />
+<img width="1920" height="868" alt="Screenshot (143)" src="https://github.com/user-attachments/assets/d5f137c8-809c-44e2-85d7-52a0f3d0d955" />
+<img width="1920" height="857" alt="Screenshot (142)" src="https://github.com/user-attachments/assets/4127ba69-a884-4914-9e75-fefb7a81f2b3" />
 
-![](/mnt/data/535f88f0-0b8c-430d-b56e-f052ffae1ba9.png)
-
-![](/mnt/data/973eca9b-f87d-4a0f-8cc2-9d35ea2036d8.png)
-
-![](/mnt/data/806ded17-b6d3-49e0-b4c0-b02e17e89adf.png)
 
 ---
 
