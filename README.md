@@ -150,7 +150,7 @@ I can:
 
 Thanks for reviewing this work. I’ve kept the README practical and honest, with a balance of context and demonstration. In an interview setting, I’d be glad to discuss:
 
-* specific algorithms (drawdowns, P/L, streaks)
+* specific algorithms
 * simplified live examples or re-implementations
 * design choices, tradeoffs, and possible extensions
 
